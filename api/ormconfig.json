@@ -1,0 +1,10 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "citizix_user",
+  "password": "An0thrS3crt",
+  "database": "citizix_db",
+  "entities": [],
+  "synchronize": true
+}
