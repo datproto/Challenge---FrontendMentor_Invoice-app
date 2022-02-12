@@ -14,11 +14,13 @@ import { User } from './entities/user.entity';
 export class UsersService {
   constructor(
     @InjectRepository(User)
-    private connection: Connection, // private usersRepository: Repository<User>,
+    private readonly usersRepository: Repository<User>,
+    private connection: Connection,
   ) {}
 
   create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+    this.usersRepository.save(createUserDto);
+    return `Users: ${createUserDto}`;
   }
 
   async createMany(users: User[]) {
