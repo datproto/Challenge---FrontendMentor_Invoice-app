@@ -1,0 +1,14 @@
+{
+  "name": "admin-refine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:datproto/Learn---NestJS-Refine.git",
+  "author": "Dat Proto <contact@datproto.com>",
+  "scripts": {
+    "start:admin": "cd admin && yarn dev",
+    "start:backend": "cd api && yarn dev:start",
+    "start:frontend": "cd app && yarn dev"
+  },
+  "license": "MIT",
+  "private": true
+}
