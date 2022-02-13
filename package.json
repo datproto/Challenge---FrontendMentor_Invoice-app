@@ -8,7 +8,8 @@
     "start:admin": "cd admin && yarn dev",
     "start:backend": "cd api && yarn start:dev",
     "start:frontend": "cd app && yarn dev",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-commit-next": "cd app && yarn lint"
   },
   "license": "MIT",
   "private": true,
