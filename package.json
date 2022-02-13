@@ -6,9 +6,15 @@
   "author": "Dat Proto <contact@datproto.com>",
   "scripts": {
     "start:admin": "cd admin && yarn dev",
-    "start:backend": "cd api && yarn dev:start",
+    "start:backend": "cd api && yarn start:dev",
     "start:frontend": "cd app && yarn dev"
   },
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.28.0"
+  }
 }

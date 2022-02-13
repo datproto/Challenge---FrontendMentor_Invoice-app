@@ -28,9 +28,9 @@ export class CreateUserDto {
   @IsEmail()
   email: string;
 
-  @ApiProperty({ required: false, default: [], isArray: true })
-  posts: Post[] = [];
+  // @ApiProperty({ required: false, default: [], isArray: true })
+  // posts: Post[] = [];
 
-  @ApiProperty({ required: false, default: true })
-  isActive?: boolean = true;
+  // @ApiProperty({ required: false, default: true })
+  // isActive?: boolean = true;
 }
