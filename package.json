@@ -10,8 +10,7 @@
     "start:frontend": "cd app && yarn dev",
     "prepare": "husky install",
     "pre-commit-next": "cd app && yarn lint && cd ..",
-    "pre-commit": "git add -A .",
-    "push": "git push"
+    "pre-commit": "git add -A ."
   },
   "license": "MIT",
   "private": true,

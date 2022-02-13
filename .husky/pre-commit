@@ -3,4 +3,3 @@
 
 yarn pre-commit-next
 yarn pre-commit
-yarn push
