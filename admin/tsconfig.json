@@ -18,11 +18,12 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "interfaces": ["interfaces/*"],
+      "interfaces/*": ["interfaces/*"],
       "styles/*": ["styles/*"],
       "components/*": ["components/*"],
       "pages/*": ["pages/*"]
     }
   },
-  "include": ["src"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["node_modules"]
 }
