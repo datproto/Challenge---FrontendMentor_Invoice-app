@@ -24,3 +24,25 @@ services:
     restart: always
     ports:
       - 8081:80
+  backend:
+    container_name: admin-refine_backend
+    build: 
+      dockerfile: Dockerfile
+      context: ./api
+      target: development
+    depends_on:
+      - db
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - 8080:3000
+      - 9229:9229
+    restart: always
+    command: yarn start:dev
+    links:
+      - db:db
+    volumes:
+      - ./api:/usr/src/api
+      - ./api/node_modules:/usr/src/api/node_modules
+  
