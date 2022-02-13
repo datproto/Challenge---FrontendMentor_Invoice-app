@@ -9,7 +9,8 @@
     "start:backend": "cd api && yarn start:dev",
     "start:frontend": "cd app && yarn dev",
     "prepare": "husky install",
-    "pre-commit-next": "cd app && yarn lint && cd .."
+    "pre-commit-next": "cd app && yarn lint && cd ..",
+    "pre-commit-nest": "cd api && yarn lint && cd .."
   },
   "license": "MIT",
   "private": true,
