@@ -1,0 +1,13 @@
+{
+  "type": "mysql",
+  "host": "db",
+  "port": 3306,
+  "username": "datproto",
+  "password": "datproto_mysql",
+  "database": "datproto_db",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true,
+  "migrations": ["dist/migrations/*{.ts,.js}"],
+  "migrationsTableName": "migrations_typeorm",
+  "migrationsRun": true
+}
