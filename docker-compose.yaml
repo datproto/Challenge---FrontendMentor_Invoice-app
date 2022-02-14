@@ -83,4 +83,20 @@ services:
     volumes:
       - ./app:/usr/src/app
       - ./app/node_modules:/usr/src/app/node_modules
+  storybook:
+    container_name: invoice-app_storybook
+    image: node:16-alpine
+    working_dir: /usr/src/storybook
+    user: 1000:1000
+    depends_on:
+      - db
+    ports:
+      - 6006:6006
+    restart: always
+    command: yarn storybook
+    links:
+      - db:db
+    volumes:
+      - ./app:/usr/src/storybook
+      - ./app/node_modules:/usr/src/storybook/node_modules
   

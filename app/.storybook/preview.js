@@ -1,7 +1,7 @@
 import * as NextImage from 'next/image'
 import { setupWorker, rest } from 'msw'
 
-import '@styles/globals.css'
+import '@/styles/globals.css'
 
 if (typeof global.process === 'undefined') {
   const worker = setupWorker(
