@@ -2,7 +2,7 @@ version: "3"
 services:
   db:
     image: mysql:8
-    container_name: admin-refine_mysql
+    container_name: fullstack_mysql
     environment:
       MYSQL_ROOT_PASSWORD: S3cret
       MYSQL_USER: datproto
@@ -14,7 +14,7 @@ services:
       - ./data:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: admin-refine_pma
+    container_name: fullstack_pma
     links:
       - db
     environment:
@@ -24,12 +24,31 @@ services:
     restart: always
     ports:
       - 8081:80
+  admin:
+    container_name: fullstack_admin
+    image: node:16-alpine
+    working_dir: /usr/src/admin
+    user: 1000:1000
+    depends_on:
+      - db
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - 3001:3000
+      - 35729:35729
+    restart: always
+    command: yarn dev
+    links:
+      - db:db
+    volumes:
+      - ./admin:/usr/src/admin
+      - ./admin/node_modules:/usr/src/admin/node_modules
   backend:
-    container_name: admin-refine_backend
-    build: 
-      dockerfile: Dockerfile
-      context: ./api
-      target: development
+    container_name: fullstack_backend
+    image: node:16-alpine
+    working_dir: /usr/src/api
+    user: 1000:1000
     depends_on:
       - db
     environment:
@@ -45,4 +64,23 @@ services:
     volumes:
       - ./api:/usr/src/api
       - ./api/node_modules:/usr/src/api/node_modules
+  frontend:
+    container_name: fullstack_frontend
+    image: node:16-alpine
+    working_dir: /usr/src/app
+    user: 1000:1000
+    depends_on:
+      - db
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - 3000:3000
+    restart: always
+    command: yarn dev
+    links:
+      - db:db
+    volumes:
+      - ./app:/usr/src/app
+      - ./app/node_modules:/usr/src/app/node_modules
   
