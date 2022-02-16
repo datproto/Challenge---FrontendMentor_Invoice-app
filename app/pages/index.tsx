@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
+import Navbar from '@/components/molecules/Navbar'
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -10,8 +12,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>Main</h1>
+      <main className="flex flex-col w-full xl:flex-row bg-lightGray dark:bg-navi-300">
+        <Navbar />
       </main>
 
       <footer></footer>

@@ -35,7 +35,7 @@ const BtnFisrt = ({ children }: ButtonProps) => {
 const BtnSecond = ({ children }: ButtonProps) => {
   return (
     <Btn customClass="flex bg-purple-200 hover:bg-purple-100 rounded-full gap-4">
-      <div className="py-2 px-4">
+      <div className="px-4 py-2">
         <Text tag="h4" customClass="text-white">
           {children}
         </Text>
@@ -46,8 +46,8 @@ const BtnSecond = ({ children }: ButtonProps) => {
 
 const BtnThird = ({ children }: ButtonProps) => {
   return (
-    <Btn customClass="group flex bg-[#F9FAFE] hover:bg-blueGray-100 dark:bg-navi-100 dark:hover:bg-white rounded-full gap-4">
-      <div className="py-2 px-4">
+    <Btn customClass="group flex bg-[#F9FAFE] hover:bg-blueGray-100 dark:bg-navi-100 hover:dark:bg-white rounded-full gap-4">
+      <div className="px-4 py-2">
         <Text
           tag="h4"
           customClass="text-blueGray-300 dark:text-blueGray-100 dark:group-hover:text-blueGray-300"
@@ -62,7 +62,7 @@ const BtnThird = ({ children }: ButtonProps) => {
 const BtnFourth = ({ children }: ButtonProps) => {
   return (
     <Btn customClass="flex bg-[#373B53] hover:bg-dark dark:bg-navi-100 dark:hover:bg-navi-200 rounded-full gap-4">
-      <div className="py-2 px-4">
+      <div className="px-4 py-2">
         <Text tag="h4" customClass="text-blueGray-200 dark:text-blueGray-100">
           {children}
         </Text>
@@ -74,7 +74,7 @@ const BtnFourth = ({ children }: ButtonProps) => {
 const BtnFifth = ({ children }: ButtonProps) => {
   return (
     <Btn customClass="flex bg-red-200 hover:bg-red-100 rounded-full gap-4">
-      <div className="py-2 px-4">
+      <div className="px-4 py-2">
         <Text tag="h4" customClass="text-white">
           {children}
         </Text>
@@ -86,7 +86,7 @@ const BtnFifth = ({ children }: ButtonProps) => {
 const BtnSixth = ({ children }: ButtonProps) => {
   return (
     <Btn customClass="group w-full flex bg-[#F9FAFE] hover:bg-blueGray-100 rounded-full gap-4">
-      <div className="py-2 w-full flex justify-center">
+      <div className="flex justify-center w-full py-2">
         <Text tag="h4" customClass="text-blueGray-300">
           {children}
         </Text>

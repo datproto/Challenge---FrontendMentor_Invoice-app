@@ -23,6 +23,44 @@ Object.defineProperty(NextImage, 'default', {
   )
 })
 
+const customViewports = {
+  sm: {
+    name: 'Mobile',
+    styles: {
+      width: '640px',
+      height: '360px',
+    },
+  },
+  md: {
+    name: 'Tablet',
+    styles: {
+      width: '768px',
+      height: '1024px',
+    },
+  },
+  lg: {
+    name: 'Tablet - Large',
+    styles: {
+      width: '1024px',
+      height: '1366px',
+    },
+  },
+  xl: {
+    name: 'Laptop',
+    styles: {
+      width: '1280px',
+      height: '800px',
+    },
+  },
+  '2xl': {
+    name: 'Desktop',
+    styles: {
+      width: '1536',
+      height: '864px',
+    },
+  },
+};
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -31,4 +69,6 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  viewport: { viewports: customViewports },
+  // layout: 'fullscreen',
 }
