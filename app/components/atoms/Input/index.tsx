@@ -11,7 +11,7 @@ interface InputProps {
   type?: 'dropdown' | 'date' | 'text' | 'email'
   label?: string
   error?: string
-  items?: string[]
+  items?: any[]
 }
 
 const InputText = ({}) => {

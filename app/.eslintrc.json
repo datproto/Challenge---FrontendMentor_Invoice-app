@@ -1,12 +1,27 @@
 {
   "root": true,
-  "extends": ["next/core-web-vitals", "plugin:storybook/recommended", "prettier"],
+  "extends": ["next/core-web-vitals", "plugin:storybook/recommended", "plugin:mdx/recommended", "prettier"],
   "settings": {
     "import/resolver": {
       "typescript": {}
-    }
+    },
+    "mdx/code-blocks": true,
+    "mdx/language-mapper": {}
   },
   "rules": {
     "no-unused-vars": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.mdx"],
+      "extends": "plugin:mdx/recommended"
+    }
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
   }
 }

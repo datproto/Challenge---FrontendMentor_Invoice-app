@@ -14,7 +14,12 @@ export const Dropdown = () => (
   <div className="h-80">
     <Input
       type="dropdown"
-      items={['Net 1 Day', 'Net 7 Days', 'Net 14 Days', 'Net 30 Days']}
+      items={[
+        'Net 1 Day',
+        'Net 7 Days',
+        'Net 14 Days',
+        <div key="any">Something</div>,
+      ]}
     />
   </div>
 )

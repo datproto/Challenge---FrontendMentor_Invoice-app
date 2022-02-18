@@ -8,7 +8,7 @@ module.exports = {
   staticDirs: ['../public'],
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
+    '@storybook/addon-essentials',
     "@storybook/addon-interactions",
     "storybook-addon-pseudo-states",
     "storybook-tailwind-dark-mode"
@@ -29,6 +29,10 @@ module.exports = {
       test: /\.css$/i,
       use: ["postcss-loader"],
     })
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      "os": require.resolve("os-browserify/browser")
+    }
     return config;
   },
 }

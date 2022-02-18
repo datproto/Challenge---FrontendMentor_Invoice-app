@@ -4,7 +4,7 @@ import { Text } from '@/components/atoms/Text'
 import Image from 'next/image'
 
 interface ButtonProps {
-  type?: string
+  type?: '1st' | '2nd' | '3rd' | '4th' | '5th' | '6th'
   customClass?: string
   children: React.ReactNode
 }
