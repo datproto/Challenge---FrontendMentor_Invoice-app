@@ -21,7 +21,7 @@ const BtnFisrt = ({ children }: ButtonProps) => {
   return (
     <Btn customClass="flex bg-purple-200 hover:bg-purple-100 rounded-full gap-4">
       <div className="flex items-center justify-center rounded-full p-[11px] text-white bg-white">
-        <Image src="assets/icon-plus.svg" width={11} height={11} alt="icon" />
+        <Image src="/assets/icon-plus.svg" width={11} height={11} alt="icon" />
       </div>
       <div className="pr-2">
         <Text tag="h4" customClass="text-white">

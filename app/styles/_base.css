@@ -5,3 +5,24 @@ div#__next,
 div#__next > div {
   @apply w-full overflow-x-hidden
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-navi-200;
+
+  border-radius: 500px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-navi-100;
+}

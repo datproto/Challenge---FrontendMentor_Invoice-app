@@ -3,15 +3,13 @@ import Image from 'next/image'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 
-// import _ from 'lodash'
-
-import './styles.css'
-
 interface InputProps {
   type?: 'dropdown' | 'date' | 'text' | 'email'
   label?: string
   error?: string
   items?: any[]
+  placeholder: string
+  customInput?: string
 }
 
 const InputText = ({}) => {
@@ -30,24 +28,26 @@ const InputEmail = ({}) => {
   )
 }
 
-const InputDropdown = ({ items }: InputProps) => {
+const InputDropdown = ({ items, placeholder, customInput }: InputProps) => {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(null)
-  const [value, setValue] = useState('Net 30 days')
+  const [value, setValue] = useState(placeholder || '')
   const choice = (value: string, index: any) => {
     setActive((active) => (active === index ? null : index))
     setValue(value)
     setOpen(!open)
   }
+
   return (
     <>
       <div
-        className="flex items-center justify-between input group-hover:outline-purple-200"
+        className={`flex items-center justify-between input group-hover:outline-purple-200 ${customInput} cursor-pointer`}
         onClick={() => setOpen(!open)}
       >
         {value}
+        <div className="min-w-[12px] max-w-[16px]" />
         <Image
-          src="assets/icon-arrow-down.svg"
+          src="/assets/icon-arrow-down.svg"
           width={11}
           height={7}
           alt="arrow-down-icon"
@@ -102,7 +102,7 @@ const InputDate = ({}) => {
     >
       {value}
       <Image
-        src="assets/icon-calendar.svg"
+        src="/assets/icon-calendar.svg"
         width={16}
         height={16}
         alt="arrow-calendar"
@@ -134,7 +134,7 @@ const InputDate = ({}) => {
       }) => (
         <div className="flex justify-between w-full">
           <Image
-            src="assets/icon-arrow-left.svg"
+            src="/assets/icon-arrow-left.svg"
             width={14}
             height={7}
             className="scale-50"
@@ -145,7 +145,7 @@ const InputDate = ({}) => {
             <Text tag="h4">{new Date(date).getFullYear()}</Text>
           </div>
           <Image
-            src="assets/icon-arrow-right.svg"
+            src="/assets/icon-arrow-right.svg"
             width={14}
             height={7}
             className="scale-50"
@@ -157,7 +157,7 @@ const InputDate = ({}) => {
   )
 }
 
-function Input({ type, label, items }: InputProps) {
+function Input({ type, label, items, placeholder, customInput }: InputProps) {
   const chooseInput = (t?: string) => {
     switch (t) {
       case 'text':
@@ -165,7 +165,13 @@ function Input({ type, label, items }: InputProps) {
       case 'email':
         return <InputEmail />
       case 'dropdown':
-        return <InputDropdown items={items} />
+        return (
+          <InputDropdown
+            items={items}
+            customInput={customInput}
+            placeholder={placeholder}
+          />
+        )
       case 'date':
         return <InputDate />
       default:
@@ -179,11 +185,13 @@ function Input({ type, label, items }: InputProps) {
         type === 'dropdown' && 'group'
       } relative flex flex-col gap-2.5`}
     >
-      <label>
-        <Text tag="h4" customClass="text-blueGray-300 dark:text-white">
-          {label}
-        </Text>
-      </label>
+      {label && (
+        <label>
+          <Text tag="h4" customClass="text-blueGray-300 dark:text-white">
+            {label}
+          </Text>
+        </label>
+      )}
       {chooseInput(type)}
     </div>
   )
@@ -191,8 +199,8 @@ function Input({ type, label, items }: InputProps) {
 
 Input.defaultProps = {
   type: 'text',
-  label: 'Field',
   error: 'No error',
+  customInput: '',
 }
 
 export default Input

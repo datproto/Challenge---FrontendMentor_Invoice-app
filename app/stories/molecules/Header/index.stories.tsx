@@ -16,4 +16,8 @@ export default {
 } as ComponentMeta<typeof Header>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const Mobile = () => <Header d={data} />
+export const Mobile = () => (
+  <div className="h-96">
+    <Header d={data} />
+  </div>
+)

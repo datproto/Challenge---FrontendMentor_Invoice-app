@@ -2,8 +2,66 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import Navbar from '@/components/molecules/Navbar'
+import InvoiceCard from '@/components/molecules/InvoiceCard'
+
+import { useEffect, useState } from 'react'
+import Header from '@/components/molecules/Header'
+import Image from 'next/image'
+import { Text } from '@/components/atoms/Text'
 
 const Home: NextPage = () => {
+  const [invoices, setInvoices] = useState([
+    {
+      id: '',
+      createdAt: '',
+      paymentDue: '',
+      description: '',
+      paymentTerms: 1,
+      clientName: '',
+      clientEmail: '',
+      status: '',
+      senderAddress: {
+        street: '',
+        city: '',
+        postCode: '',
+        country: '',
+      },
+      clientAddress: {
+        street: '',
+        city: '',
+        postCode: '',
+        country: '',
+      },
+      items: [
+        {
+          name: '',
+          quantity: 1,
+          price: 1800.9,
+          total: 1800.9,
+        },
+      ],
+      total: 1800.9,
+    },
+  ])
+
+  const getData = () => {
+    fetch('/mock/data.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        setInvoices(data)
+      })
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <div>
       <Head>
@@ -12,8 +70,47 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col w-full xl:flex-row bg-lightGray dark:bg-navi-300">
+      <main className="flex flex-col w-full h-screen xl:flex-row bg-lightGray dark:bg-navi-300">
         <Navbar />
+
+        <div className="flex flex-col gap-8 md:gap-14 xl:gap-16 mx-auto mt-[104px] md:mt-[136px] xl:mt-[4.5rem] px-4 md:px-6 xl:px-0">
+          <Header d={invoices} />
+          {invoices ? (
+            <div className="flex flex-col gap-4 overflow-y-auto">
+              {invoices.length > 0 &&
+                invoices.map((d, k) => (
+                  <InvoiceCard
+                    key={k}
+                    sku={d?.id}
+                    dueDate={d?.paymentDue}
+                    owner={d?.clientName}
+                    amount={d?.total}
+                    status={d?.status}
+                  />
+                ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center gap-10 grow">
+              <Image
+                src="/assets/illustration-empty.svg"
+                width={242}
+                height={200}
+                alt="empty"
+              />
+              <div className="flex flex-col gap-4 max-w-[242px] text-center">
+                <Text tag="h4">There is nothing here</Text>
+                <div>
+                  <Text tag="p" customClass="type-1 text-blueGray-100">
+                    Create an invoice by clicking the{'\n'}
+                  </Text>
+                  <Text tag="p" customClass="type-1 text-blueGray-100">
+                    <b>New</b> button and get started{' '}
+                  </Text>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </main>
 
       <footer></footer>
